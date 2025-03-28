@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Abusivismo edilizio a Carini</title>
+  <title>Abusivismo edilizio a Carini - Versione pulita</title>
   <style>
+    /* RESET */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       background-color: #0d0d0d;
       color: #fff;
     }
+
+    /* WRAPPER PRINCIPALE */
     .wrapper {
-      max-width: 1280px;
+      max-width: 800px; /* limitata a 800px per una migliore leggibilità */
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -40,13 +44,11 @@
       height: 40px;
       margin-right: 1rem;
       object-fit: contain;
-      max-width: 100%;
     }
     .header-left h1 {
-      color: #ff3370;
+      color: #ff3370; /* tipico rosa "PalermoToday" */
       font-size: 1.6rem;
       font-weight: bold;
-      margin: 0;
     }
     .header-right {
       font-size: 0.875rem;
@@ -62,33 +64,11 @@
       border-bottom: 1px solid #333;
     }
 
-    /* MAIN: 3 COLONNE */
-    .main {
-      display: flex;
-      flex-grow: 1;
-      background-color: #151515;
-    }
-
-    /* SIDEBAR (SINISTRA) */
-    .sidebar {
-      width: 220px;
-      background-color: #1a1a1a;
-      padding: 1rem;
-      border-right: 1px solid #333;
-      flex-shrink: 0;
-    }
-    .sidebar img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      border-radius: 6px;
-      margin-bottom: 1rem;
-    }
-
-    /* CONTENUTO CENTRALE */
+    /* CONTENITORE CENTRALE */
     .content {
-      flex-grow: 1;
       padding: 1.5rem;
+      background-color: #151515;
+      flex-grow: 1;
     }
     .content h2 {
       color: #ff3370;
@@ -104,11 +84,16 @@
       border-bottom: 1px solid #333;
       padding-bottom: 0.5rem;
     }
+
+    /* TESTO ARTICOLO */
     .article-text {
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 1rem;
       text-align: justify;
+    }
+    .article-text p {
+      margin-bottom: 1rem;
     }
 
     /* GALLERIA IMMAGINI */
@@ -123,7 +108,7 @@
       max-width: 100%;
       height: auto;
       border-radius: 6px;
-      flex-shrink: 0;
+      flex-shrink: 0; /* non si restringe anche se lo spazio è poco */
     }
 
     /* SOCIAL */
@@ -146,21 +131,6 @@
       border-radius: 6px;
     }
 
-    /* COLONNA DESTRA (aside) */
-    .aside-right {
-      width: 250px;
-      background-color: #1a1a1a;
-      padding: 1rem;
-      border-left: 1px solid #333;
-      flex-shrink: 0;
-    }
-    .aside-right img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      border-radius: 6px;
-    }
-
     /* FOOTER */
     footer {
       background-color: #1a1a1a;
@@ -178,34 +148,26 @@
       max-width: 100%;
     }
 
-    /* BREAKPOINT: SCHERMI STRETTI => TUTTO A COLONNA SINGOLA */
-    @media (max-width: 900px) {
-      .main {
-        flex-direction: column;
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .header-left h1 {
+        font-size: 1.3rem;
       }
-
-      .sidebar,
-      .aside-right {
-        width: 100%;
-        border: none;
-        /* se vuoi che la sidebar vada SOPRA il contenuto, la lasci per prima
-           se preferisci che vada DOPO, inverti l’ordine dei div nel tuo HTML */
+      .content h2 {
+        font-size: 1.3rem;
       }
-
-      .aside-right {
-        border-top: 1px solid #333;
-        border-left: none;
-        margin-top: 1rem;
+      iframe {
+        height: 240px;
       }
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
-
+    <!-- HEADER -->
     <header>
       <div class="header-left">
-        <img src="Immagine 2025-03-28 170921.png" alt="Logo PalermoToday">
+        <img src="logo-topbar.png" alt="Logo PalermoToday">
         <h1>PALERMO TODAY</h1>
       </div>
       <div class="header-right">
@@ -213,63 +175,85 @@
       </div>
     </header>
 
+    <!-- BARRA INFO -->
     <div class="info-bar">
       Venerdì, 28 Marzo 2025 - Nubi sparse con pioggia
     </div>
 
-    <div class="main">
-      <div class="sidebar">
-        <img src="sinistra.png" alt="Sidebar" />
-        <!-- Info autore -->
-        <h3 style="color:#fff;margin-bottom:0.5rem;">Redazione</h3>
-        <p style="font-size:0.9rem;color:#bbb;margin-bottom:1rem;">25 marzo 2025 - 10:18</p>
-        <hr style="border:none;border-top:1px solid #333;margin:0.75rem 0;">
-        <p style="font-size:0.85rem;color:#ddd;">Si parla di:</p>
-        <p style="font-size:0.9rem;color:#fff;margin-bottom:0.5rem;">abusivismo edilizio</p>
-        <p style="font-size:0.9rem;color:#fff;">Giovì Monteleone</p>
+    <!-- CONTENUTO PRINCIPALE -->
+    <div class="content">
+      <h2>Abusivismo edilizio, il Comune di Carini avvia le procedure per la demolizione</h2>
+      <div class="meta">Venerdì, 28 Marzo 2025 - Nubi sparse con pioggia</div>
+
+      <!-- GALLERIA -->
+      <div class="gallery">
+        <img src="img1.png" alt="Facciata edificio via Cagliari">
+        <img src="img2.png" alt="Sindaco Giovì Monteleone">
+        <img src="img3.png" alt="Ruspa demolisce edificio sul mare">
       </div>
 
-      <div class="content">
-        <h2>Abusivismo edilizio, il Comune di Carini avvia le procedure...</h2>
-        <div class="meta">Venerdì, 28 Marzo 2025 - Nubi sparse con pioggia</div>
-
-        <!-- GALLERIA -->
-        <div class="gallery">
-          <img src="Immagine 2025-03-28 165424.png" alt="Facciata edificio via Cagliari">
-          <img src="images.jpg" alt="Sindaco Giovì Monteleone">
-          <img src="Immagine 2025-03-28 172600.png" alt="Ruspa demolisce edificio sul mare">
-        </div>
-
-        <div class="article-text">
-          <p>Continuano le azioni del Comune di Carini contro l’abusivismo edilizio...</p>
-          <!-- Resto del tuo testo, paragrafi, ecc. -->
-        </div>
-
-        <div class="social-links">
-          Condividi:
-          <a href="https://facebook.com" target="_blank">Facebook</a>
-          <a href="https://twitter.com" target="_blank">Twitter</a>
-          <a href="https://wa.me/?text=Abusivismo+edilizio+a+Carini" target="_blank">WhatsApp</a>
-        </div>
-
-        <iframe
-          src="https://www.google.com/maps/embed?pb=..."
-          allowfullscreen>
-        </iframe>
+      <div class="article-text">
+        <p>
+          Continuano le azioni del Comune di Carini contro l’abusivismo edilizio. 
+          L’avvio di questa nuova procedura è stato scatenato dal tentativo di un cittadino 
+          di acquistare un magazzino in via Cagliari 13.
+        </p>
+        <p>
+          Durante i controlli preliminari, il Comune ha scoperto che l’intero edificio risultava
+          privo di regolari permessi e costruito sopra il torrente Canalotto, una zona a rischio
+          idrogeologico e vincolata dal punto di vista ambientale.
+        </p>
+        <p>
+          Anche se l’immobile non è di nuova costruzione, è comunque composto da più appartamenti
+          ed è attualmente abitato. Perciò, gli occupanti sono stati informati dell’avvio 
+          dell’iter di sgombero, necessario per poter procedere con l’abbattimento delle parti abusive.
+        </p>
+        <p>
+          Questo intervento rientrerebbe nel piano finanziato attraverso fondi del Pnrr, 
+          destinato alla riqualificazione del territorio e alla restituzione delle aree 
+          compromesse alla cittadinanza.
+        </p>
+        <p>
+          “Abbiamo il dovere di intervenire in tutte quelle situazioni che mettono a rischio 
+          l’incolumità pubblica e deturpano l’ambiente”, dichiara il sindaco Giovì Monteleone. 
+          “Costruire sopra un torrente è un pericolo evidente, sia per chi ci vive sia per 
+          l’equilibrio idrogeologico del territorio. La nostra linea resta ferma: legalità, 
+          sicurezza e rispetto dell’ambiente”.
+        </p>
+        <p>
+          L’intervento, che fa parte di un più ampio piano di recupero e riqualificazione urbana, 
+          punta anche a prevenire rischi legati alle piogge torrenziali. Negli ultimi anni 
+          queste hanno già messo a dura prova il territorio carinese.
+        </p>
+        <p>
+          Dopo le demolizioni sul lungomare Cristoforo Colombo e in via Anthurium, 
+          l’azione del Comune prosegue, senza sosta, anche nelle zone più interne.
+        </p>
       </div>
 
-      <div class="aside-right">
-        <img src="destra.png" alt="I più letti PalermoToday" />
+      <!-- SOCIAL -->
+      <div class="social-links">
+        Condividi:
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="https://twitter.com" target="_blank">Twitter</a>
+        <a href="https://wa.me/?text=Abusivismo+edilizio+a+Carini" target="_blank">WhatsApp</a>
       </div>
+
+      <!-- MAPPA -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12..."
+        allowfullscreen>
+      </iframe>
     </div>
 
+    <!-- FOOTER -->
     <footer>
-      <p>© Copyright 2011-2025 - PalermoToday
+      <p>
+        © Copyright 2011-2025 - PalermoToday
         <br>Citynews Spa, Viale Stelvio 70, Milano
       </p>
-      <img src="Immagine 2025-03-28 165844.png" alt="Footer PalermoToday">
+      <img src="footer.png" alt="Footer PalermoToday">
     </footer>
-
   </div>
 </body>
 </html>
