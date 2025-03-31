@@ -1,39 +1,50 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Abusivismo edilizio a Carini - PalermoToday Style</title>
+
   <style>
-    /* RESET */
+    /* RESET DI BASE */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    /* STILI GENERALI */
     body {
       font-family: Arial, Helvetica, sans-serif;
       background-color: #0d0d0d; /* sfondo scuro */
       color: #fff;
     }
+    img {
+      display: block;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-    /* WRAPPER (contenitore principale) */
+    /* WRAPPER PRINCIPALE */
     .wrapper {
       max-width: 1280px;
       margin: 0 auto;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      background-color: #0d0d0d;
     }
 
-    /* HEADER (topbar) */
+    /* HEADER (TOP BAR) */
     header {
       background-color: #1a1a1a;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.5rem 1rem;
+      padding: 0.75rem 1rem;
       border-bottom: 1px solid #333;
     }
     .header-left {
@@ -46,7 +57,7 @@
       object-fit: contain;
     }
     .header-left h1 {
-      color: #ff3370; /* Rosa tipico di PalermoToday */
+      color: #ff3370; /* Colore rosa di PalermoToday */
       font-size: 1.6rem;
       font-weight: bold;
     }
@@ -54,17 +65,31 @@
       font-size: 0.875rem;
       color: #ccc;
     }
+    .header-right a {
+      margin-left: 1rem;
+      color: #ccc;
+      transition: color 0.2s ease-in-out;
+    }
+    .header-right a:hover {
+      color: #fff;
+    }
 
-    /* BARRA INFO (es. data/meteo) */
+    /* BARRA INFO (DATA + METEO) */
     .info-bar {
       background-color: #000;
       color: #ccc;
       font-size: 0.9rem;
-      padding: 0.4rem 1rem;
+      padding: 0.5rem 1rem;
       border-bottom: 1px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .info-bar span {
+      display: inline-block;
     }
 
-    /* CONTENUTO PRINCIPALE: 3 COLONNE */
+    /* CONTENITORE PRINCIPALE: 3 COLONNE */
     .main {
       display: flex;
       flex-grow: 1;
@@ -83,11 +108,28 @@
       border-radius: 6px;
       margin-bottom: 1rem;
     }
+    .sidebar h3 {
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .sidebar p {
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    .sidebar hr {
+      border: none;
+      border-top: 1px solid #333;
+      margin: 1rem 0;
+    }
 
-    /* COLONNA CENTRALE (contenuto) */
+    /* COLONNA CENTRALE (ARTICOLO) */
     .content {
       flex-grow: 1;
       padding: 1.5rem;
+      min-height: 100%;
     }
     .content h2 {
       color: #ff3370;
@@ -103,6 +145,8 @@
       border-bottom: 1px solid #333;
       padding-bottom: 0.5rem;
     }
+
+    /* TESTO ARTICOLO */
     .article-text {
       font-size: 1rem;
       line-height: 1.6;
@@ -125,6 +169,10 @@
       height: 180px;
       border-radius: 6px;
       flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
     }
 
     /* COLONNA DESTRA (aside) */
@@ -148,6 +196,10 @@
       margin-right: 0.75rem;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.2s ease;
+    }
+    .social-links a:hover {
+      color: #fff;
     }
 
     /* MAPPA */
@@ -168,6 +220,10 @@
       text-align: center;
       border-top: 1px solid #333;
     }
+    footer p {
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
     footer img {
       margin-top: 0.5rem;
       max-height: 40px;
@@ -175,7 +231,7 @@
       border-radius: 4px;
     }
 
-    /* RESPONSIVE: a max-width:900px le colonne diventano verticali */
+    /* RESPONSIVE: SOTTO I 900PX, DIVENTA A COLONNA UNICA */
     @media (max-width: 900px) {
       .main {
         flex-direction: column;
@@ -189,13 +245,43 @@
       .aside-right {
         border-top: none;
       }
+      .info-bar {
+        font-size: 0.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+      .header-left h1 {
+        font-size: 1.3rem;
+      }
+    }
+
+    /* BREAKPOINT PIU' STRETTO (600PX) */
+    @media (max-width: 600px) {
+      .header-left img {
+        height: 30px;
+        margin-right: 0.5rem;
+      }
+      .header-left h1 {
+        font-size: 1.2rem;
+      }
+      .info-bar {
+        font-size: 0.75rem;
+      }
+      .gallery img {
+        height: 150px;
+      }
+      .content h2 {
+        font-size: 1.4rem;
+      }
+      iframe {
+        height: 220px;
+      }
     }
   </style>
 </head>
 <body>
-
   <div class="wrapper">
-
     <!-- HEADER -->
     <header>
       <div class="header-left">
@@ -203,36 +289,43 @@
         <h1>PALERMO TODAY</h1>
       </div>
       <div class="header-right">
-        Abbonati &nbsp;|&nbsp; Accedi
+        <a href="#">Abbonati</a>
+        <a href="#">Accedi</a>
       </div>
     </header>
 
-    <!-- INFO BAR -->
+    <!-- INFO BAR (DATA + METEO) -->
     <div class="info-bar">
-      Venerdì, 28 Marzo 2025 - Nubi sparse con pioggia
+      <span>Venerdì, 28 Marzo 2025</span>
+      <span>Nubi sparse con pioggia</span>
     </div>
 
-    <!-- SEZIONE PRINCIPALE (3 colonne) -->
+    <!-- MAIN: 3 COLONNE -->
     <div class="main">
-
       <!-- COLONNA SINISTRA -->
       <div class="sidebar">
-        <!-- Info autore -->
         <img src="sinistra.png" alt="Redazione e autore" />
-        <h3 style="color:#fff;font-size:1rem;margin-bottom:0.5rem;">Redazione</h3>
-        <p style="font-size:0.9rem;color:#bbb;margin-bottom:1rem;">25 marzo 2025 - 10:18</p>
-        <hr style="border:none;border-top:1px solid #333;margin:0.75rem 0;" />
-        <p style="font-size:0.85rem;color:#ddd;">Si parla di:</p>
-        <p style="font-size:0.9rem;color:#fff;margin-bottom:0.5rem;">abusivismo edilizio</p>
-        <p style="font-size:0.9rem;color:#fff;">Giovì Monteleone</p>
+        <h3>Redazione</h3>
+        <p>25 marzo 2025 - 10:18</p>
+        <hr />
+        <p style="color:#ddd;font-size:0.85rem;">Si parla di:</p>
+        <p style="color:#fff;font-size:0.9rem;margin-bottom:0.5rem;">abusivismo edilizio</p>
+        <p style="color:#fff;font-size:0.9rem;">Giovì Monteleone</p>
       </div>
 
       <!-- COLONNA CENTRALE -->
       <div class="content">
-        <h2>Abusivismo edilizio, il Comune di Carini avvia le procedure per la demolizione di una palazzina in via Cagliari: sorge sopra il torrente Canalotto</h2>
-        <div class="meta">Venerdì, 28 Marzo 2025 - Nubi sparse con pioggia</div>
+        <h2>
+          Abusivismo edilizio, il Comune di Carini avvia le procedure per 
+          la demolizione di una palazzina in via Cagliari: sorge sopra 
+          il torrente Canalotto
+        </h2>
 
-        <!-- GALLERIA -->
+        <div class="meta">
+          Venerdì, 28 Marzo 2025 - Nubi sparse con pioggia
+        </div>
+
+        <!-- GALLERIA IMMAGINI -->
         <div class="gallery">
           <img src="Immagine 2025-03-28 165424.png" alt="Facciata edificio via Cagliari" />
           <img src="images.jpg" alt="Sindaco Giovì Monteleone" />
@@ -243,43 +336,43 @@
         <div class="article-text">
           <p>
             Continuano le azioni del Comune di Carini contro l’abusivismo edilizio.
-            L’avvio di questa nuova procedura è stato scatenato dal tentativo di un cittadino 
+            L’avvio di questa nuova procedura è stato scatenato dal tentativo di un cittadino
             di acquistare un magazzino in via Cagliari 13.
           </p>
           <p>
-            Durante i controlli preliminari, il Comune ha scoperto che l’intero edificio risultava
-            privo di regolari permessi e costruito sopra il torrente Canalotto, una zona a rischio
-            idrogeologico e vincolata dal punto di vista ambientale.
+            Durante i controlli preliminari, il Comune ha scoperto che l’intero edificio 
+            risultava privo di regolari permessi e costruito sopra il torrente Canalotto, 
+            una zona a rischio idrogeologico e vincolata dal punto di vista ambientale.
           </p>
           <p>
             Anche se l’immobile non è di nuova costruzione, è comunque composto da più appartamenti
-            ed è attualmente abitato. Perciò, gli occupanti sono stati informati dell’avvio dell’iter 
-            di sgombero, necessario per poter procedere con l’abbattimento delle parti abusive.
+            ed è attualmente abitato. Perciò, gli occupanti sono stati informati dell’avvio 
+            dell’iter di sgombero, necessario per procedere con l’abbattimento delle parti abusive.
           </p>
           <p>
-            Questo intervento rientrerebbe nel piano finanziato attraverso fondi del Pnrr, 
-            destinato alla riqualificazione del territorio e alla restituzione delle aree 
+            Questo intervento rientrerebbe nel piano finanziato attraverso fondi del Pnrr,
+            destinato alla riqualificazione del territorio e alla restituzione delle aree
             compromesse alla cittadinanza.
           </p>
           <p>
-            “Abbiamo il dovere di intervenire in tutte quelle situazioni che mettono a rischio 
+            “Abbiamo il dovere di intervenire in tutte quelle situazioni che mettono a rischio
             l’incolumità pubblica e deturpano l’ambiente”, dichiara il sindaco Giovì Monteleone.
-            “Costruire sopra un torrente è un pericolo evidente, sia per chi ci vive sia per 
-            l’equilibrio idrogeologico del territorio. La nostra linea resta ferma: legalità, 
+            “Costruire sopra un torrente è un pericolo evidente, sia per chi ci vive sia per
+            l’equilibrio idrogeologico del territorio. La nostra linea resta ferma: legalità,
             sicurezza e rispetto dell’ambiente”.
           </p>
           <p>
-            L’intervento, che fa parte di un più ampio piano di recupero e riqualificazione urbana, 
-            punta anche a prevenire rischi legati alle piogge torrenziali. Negli ultimi anni queste 
+            L’intervento, che fa parte di un più ampio piano di recupero e riqualificazione urbana,
+            punta anche a prevenire rischi legati alle piogge torrenziali, che negli ultimi anni
             hanno già messo a dura prova il territorio carinese.
           </p>
           <p>
-            Dopo le demolizioni sul lungomare Cristoforo Colombo e in via Anthurium, 
+            Dopo le demolizioni sul lungomare Cristoforo Colombo e in via Anthurium,
             l’azione del Comune prosegue, senza sosta, anche nelle zone più interne.
           </p>
         </div>
 
-        <!-- SOCIAL -->
+        <!-- SOCIAL LINKS -->
         <div class="social-links">
           Condividi:
           <a href="https://facebook.com" target="_blank">Facebook</a>
@@ -289,12 +382,12 @@
 
         <!-- MAPPA -->
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18...etc..."
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d796.6213853150472!2d13.15378469746944!3d38.13923497100853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1319eabec63d17d5%3A0xa84a3f9a0b378828!2sVia%20Cagliari%2C%2090030%20Carini%20PA!5e0!3m2!1sit!2sit!4v1711644400000"
           allowfullscreen>
         </iframe>
       </div>
 
-      <!-- COLONNA DESTRA -->
+      <!-- COLONNA DESTRA (i più letti) -->
       <div class="aside-right">
         <img src="destra.png" alt="I più letti PalermoToday" />
       </div>
@@ -308,7 +401,6 @@
       </p>
       <img src="Immagine 2025-03-28 165844.png" alt="Footer Palermo Today" />
     </footer>
-
   </div>
 </body>
 </html>
